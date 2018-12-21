@@ -26,7 +26,7 @@
 - [x] 提供了图片加载进度指示器的实现
 - [x] 提供了查看原图按钮的实现
 - [x] 提供了多种数据源代理、视图代理和转场动画代理的实现，自由搭配选用
-- [ ] 理论上支持浏览视频，需自己实现播放功能（待补充示例）
+- [ ] 纯视频、视频与图片混合（待开发）
 
 
 <div>
@@ -35,7 +35,11 @@
 	<img src="https://github.com/JiongXing/PhotoBrowser/raw/master/Assets/Browser.png" width = "30%" div/>
 </div>
 
-# Version History
+# Change Log
+
+## Version 2.1.1
+**2018/11/29**
+- 优化横屏模式的显示效果，横屏时显示全图
 
 ## Version 2.1.0
 **2018/10/27**
@@ -63,6 +67,8 @@
 - iOS 9.0
 - Swift 4.2
 - Xcode 10
+> - 如需要用在Swift4.2之下的项目使用，请自行修改为相应Swift版本的语法。
+> - 改为Swift4.0或4.1的语法，修改的地方只有几处，工作量不大。
 
 # Installation
 
@@ -79,6 +85,11 @@ pod 'JXPhotoBrowser'
 ```
 pod 'JXPhotoBrowser/KingfisherWebP'
 ```
+
+## 手动导入
+1. 请把`Source/Core`下的所有文件拷贝到你的项目。
+2. 如果需要使用`Kingfisher`来加载网络图片，就把`Source/Kingfisher`下的文件也拷贝到你的项目，并导入`Kingfisher`库。
+3. 如果需要加载`WebP`图片，就把`Source/KingfisherWebP`下的文件也拷贝到你的项目，并导入`KingfisherWebP`库。
 
 # Usage
 

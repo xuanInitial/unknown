@@ -72,7 +72,7 @@ class YYDanceViewController: BaseViewController,UITableViewDelegate,UITableViewD
             }
             
         }
-        Network.requestData(.GET, URLString: "https://data.3g.yy.com/mobyy/nav/sing/dance?bkt=0&channel=appstore&compAppid=yymip&hdid=b155de5b7367f2f50fc3e2a25ea20d02328239db&imei=b155de5b7367f2f50fc3e2a25ea20d02328239db&ispType=1&loadType=1&mac=b155de5b7367f2f50fc3e2a25ea20d02328239db&model=iPhone8%2C1&netType=2&os=iOS&osVersion=11.0&stype=2&uid=496425918&yyVersion=7.0.3&yyplugins=11%2C12%2C113") { (result) in
+        Network.requestData(.GET, URLString: "https://data.3g.yy.com/mobyy/nav/sing/dance?bkt=0&channel=appstore&compAppid=yymip&hdid=b155de5b7367f2f50fc3e2a25ea20d02328239db&imei=b155de5b7367f2f50fc3e2a25ea20d02328239db&ispType=1&loadType=1&mac=b155de5b7367f2f50fc3e2a25ea20d02328239db&model=iPhone8%2C1&netType=2&os=iOS&osVersion=11.0&stype=2&uid=496425918&yyVersion=7.13.0&yyplugins=11%2C12%2C113") { (result) in
             
         let model = Mapper<DanceRootClass>().map(JSON: result as! [String : Any])
             self.danceListDate = (model?.data![0].data)!
