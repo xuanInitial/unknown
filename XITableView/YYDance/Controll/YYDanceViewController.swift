@@ -33,8 +33,31 @@ class YYDanceViewController: BaseViewController,UITableViewDelegate,UITableViewD
         self.view .addSubview(danceTableView)
         loadData()
         setUpRefresh()
+        buildRightItemBarButton()
     }
 
+    // MARK: - 导航栏  refreshClick
+    fileprivate func buildRightItemBarButton() {
+        let rightButton = UIButton(frame: CGRect(x: 0, y: 0, width: 60, height: 44))
+        rightButton.setImage(UIImage(named: "favor_1"), for: UIControlState.normal)
+        
+        rightButton.addTarget(self, action: #selector(refreshClick), for: UIControlEvents.touchUpInside)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightButton)
+    }
+    
+    @objc fileprivate func refreshClick() {
+       
+//        let urlstring = "https://wap.yy.com/mobileweb/60987719/60987719?timestamp=1546493663&sharedOid=1056750511&version=7.14.0&edition=1&platform=1&config_id=55&userUid=2174357578&uid="
+        
+          let urlstring = "http://www.yy.com/"+"\(60987719)/"+"\(60987719)?"+"tempId="+"\(2174357578)"
+        
+        let webVC = WebViewController(navigationTitle: "静静", urlStr: urlstring)
+        
+        webVC.hidesBottomBarWhenPushed = true
+        
+        self.navigationController!.pushViewController(webVC, animated: true)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -72,7 +95,7 @@ class YYDanceViewController: BaseViewController,UITableViewDelegate,UITableViewD
             }
             
         }
-        Network.requestData(.GET, URLString: "https://data.3g.yy.com/mobyy/nav/sing/dance?bkt=0&channel=appstore&compAppid=yymip&hdid=b155de5b7367f2f50fc3e2a25ea20d02328239db&imei=b155de5b7367f2f50fc3e2a25ea20d02328239db&ispType=1&loadType=1&mac=b155de5b7367f2f50fc3e2a25ea20d02328239db&model=iPhone8%2C1&netType=2&os=iOS&osVersion=11.0&stype=2&uid=496425918&yyVersion=7.13.0&yyplugins=11%2C12%2C113") { (result) in
+        Network.requestData(.GET, URLString: "https://data.3g.yy.com/mobyy/nav/sing/dance?bkt=0&channel=appstore&compAppid=yymip&hdid=b155de5b7367f2f50fc3e2a25ea20d02328239db&imei=b155de5b7367f2f50fc3e2a25ea20d02328239db&ispType=1&loadType=1&mac=b155de5b7367f2f50fc3e2a25ea20d02328239db&model=iPhone8%2C1&netType=2&os=iOS&osVersion=12.1&stype=2&uid=496425918&yyVersion=7.14.1&yyplugins=11%2C12%2C113") { (result) in
             
         let model = Mapper<DanceRootClass>().map(JSON: result as! [String : Any])
             self.danceListDate = (model?.data![0].data)!
